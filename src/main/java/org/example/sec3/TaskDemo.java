@@ -11,7 +11,8 @@ public class TaskDemo {
 
     public static void main(String[] args) {
         log.info("Task count {}", TASK_COUNT);
-        demo(Thread.ofPlatform().name("PT", 1));
+        //demo(Thread.ofPlatform().name("PT", 1));
+        demo(Thread.ofVirtual().name("VT", 1));
     }
 
     public static void demo(Thread.Builder builder) {

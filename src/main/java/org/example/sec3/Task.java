@@ -10,7 +10,7 @@ public class Task {
     public static void cpuIntensive(int i) {
         log.info("starting cpu intensive task. Thread info {}", Thread.currentThread());
         var timeTaken = CommonUtils.timer(() -> findFiv(i));
-        log.info("ending task. time taken {} ms", timeTaken);
+        log.info("ending task. time taken {} ms. Thread info {}", timeTaken, Thread.currentThread());
     }
 
     public static long findFiv(long i) {
