@@ -6,11 +6,11 @@ import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
 import java.util.ArrayList;
-import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
-public class ReentrantLock {
-    private static final Logger log = LoggerFactory.getLogger(ReentrantLock.class);
-    private static final Lock lock = new java.util.concurrent.locks.ReentrantLock();
+public class ReentrantLockClass {
+    private static final Logger log = LoggerFactory.getLogger(ReentrantLockClass.class);
+    private static final ReentrantLock lock = new ReentrantLock(true);
     private static final ArrayList<Integer> list = new ArrayList<>();
 
     public static void main(String[] args) {
@@ -52,7 +52,7 @@ public class ReentrantLock {
         try {
             log.info("before locking {}", Thread.currentThread());
             lock.lock();
-            log.info("virtual thread {} entering", Thread.currentThread());
+            log.info("virtual thread {} entering hold count {}", Thread.currentThread(), lock.getHoldCount());
             CommonUtils.sleep(Duration.ofSeconds(10));
             log.info("virtual thread {} ending", Thread.currentThread());
         } catch (Exception ex) {
