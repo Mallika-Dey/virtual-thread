@@ -8,7 +8,7 @@ import java.net.URI;
 public class Client {
     public static final Logger log = LoggerFactory.getLogger("Client.class");
     public static final String PRODUCT_REQUEST = "http://localhost:7070/sec01/product/%d";
-    public static final String RATING_REQUEST = "http://localhost:7070/sec01/product/%d";
+    public static final String RATING_REQUEST = "http://localhost:7070/sec01/rating/%d";
 
     public static String getProduct(int id) {
         return callEternalService(PRODUCT_REQUEST.formatted(id));
