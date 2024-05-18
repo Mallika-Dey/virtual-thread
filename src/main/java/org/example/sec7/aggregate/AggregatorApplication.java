@@ -13,7 +13,8 @@ public class AggregatorApplication {
     private static final Logger log = LoggerFactory.getLogger("AggregatorApplication.class");
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
-        var executor = Executors.newVirtualThreadPerTaskExecutor();
+//        var executor = Executors.newVirtualThreadPerTaskExecutor();
+        var executor = Executors.newThreadPerTaskExecutor(Thread.ofVirtual().name("VT", 1).factory());
         var aggregator = new AggregatorService(executor);
 
         List<Future<ProductDTO>> productDTOFuture = IntStream.rangeClosed(1, 50).mapToObj((id) -> executor.submit(() -> aggregator.getProduct(id))).toList();
